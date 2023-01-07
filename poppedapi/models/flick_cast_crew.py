@@ -1,0 +1,10 @@
+from django.db import models
+from models import Flick
+
+class Flick_Cast_Crew(models.Model):
+
+    flick_id = models.ForeignKey(Flick, on_delete=models.CASCADE)
+    cast_crew = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.cast_crew

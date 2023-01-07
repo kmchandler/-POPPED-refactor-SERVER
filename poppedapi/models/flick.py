@@ -1,14 +1,14 @@
 from django.db import models
-from models import Flick_Mood
+from models import Flick_Mood, Flick_Cast_Crew, Flick_Genre, Flick_Recommended_By
 
 class Flick(models.Model):
 
     title = models.CharField(max_length=100)
     type = models.CharField(max_length=50)
-    genre = models.CharField(max_length=50)
-    moods = models.ForeignKey(Flick_Mood, on_delete=models.CASCADE)
-    castCrew = models.CharField(max_length=100) #HOW DO I DO THIS PART??
-    recommended_by = models.CharField(max_length=50)
+    flick_genres = models.ForeignKey(Flick_Genre, on_delete=models.CASCADE) 
+    flick_moods = models.ForeignKey(Flick_Mood, on_delete=models.CASCADE)
+    cast_crew = models.ForeignKey(Flick_Cast_Crew, on_delete=models.CASCADE) 
+    recommended_by = models.ForeignKey(Flick_Recommended_By, on_delete=models.CASCADE) 
     watched = models.BooleanField(default=False)
     favorite = models.BooleanField(default=False)
     image_url = models.CharField(max_length=100)
