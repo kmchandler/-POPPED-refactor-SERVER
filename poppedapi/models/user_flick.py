@@ -1,5 +1,6 @@
 from django.db import models
-from models import Flick, User
+from .flick import Flick
+from .user import User
 
 class User_Flick(models.Model):
 

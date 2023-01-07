@@ -1,5 +1,5 @@
 from django.db import models
-from models import Flick
+from .flick import Flick
 
 class Flick_Cast_Crew(models.Model):
 
