@@ -1,5 +1,6 @@
 from django.db import models
-from models import Flick, Genre
+from .flick import Flick
+from .genre import Genre
 
 class Flick_Genre(models.Model):
 

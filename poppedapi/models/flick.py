@@ -1,5 +1,8 @@
 from django.db import models
-from models import Flick_Mood, Flick_Cast_Crew, Flick_Genre, Flick_Recommended_By
+from .flick_mood import Flick_Mood
+from .flick_cast_crew import Flick_Cast_Crew
+from .flick_genre import Flick_Genre
+from .flick_recommended_by import Flick_Recommended_By
 
 class Flick(models.Model):
 

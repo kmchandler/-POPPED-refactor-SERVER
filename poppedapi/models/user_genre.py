@@ -1,5 +1,6 @@
 from django.db import models
-from models import User, Genre
+from .user import User
+from .genre import Genre
 
 class User_Genre(models.Model):
 

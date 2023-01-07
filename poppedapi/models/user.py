@@ -1,5 +1,5 @@
 from django.db import models
-from models import Mood
+from .mood import Mood
 
 class User(models.Model):
 
