@@ -1,0 +1,41 @@
+[
+    {
+        "model": "poppedapi.flick",
+        "pk": 1,
+        "fields": {
+            "title": "The Sandman",
+            "type": "TV Show",
+            "watched": true,
+            "favorite": false,
+            "image_url": "https://wwwflickeringmythc3c8f7.zapwp.com/q:i/r:1/wp:1/w:362/u:https://cdn.flickeringmyth.com/wp-content/uploads/2022/06/The-Sandman-poster-600x750.jpg",
+            "rating": 3,
+            "uid": "aF71Ue9O2mbivn9m8YYecBFgoFj2"
+        }
+    },
+    {
+        "model": "poppedapi.flick",
+        "pk": 2,
+        "fields": {
+            "title": "the crown",
+            "type": "TV Show",
+            "watched": false,
+            "favorite": false,
+            "image_url": "https://m.media-amazon.com/images/M/MV5BZmY0MzBlNjctNTRmNy00Njk3LWFjMzctMWQwZDAwMGJmY2MyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg",
+            "rating": 0,
+            "uid": "aF71Ue9O2mbivn9m8YYecBFgoFj2"
+        }
+    },
+    {
+        "model": "poppedapi.flick",
+        "pk": 3,
+        "fields": {
+            "title": "persuasion (2022)",
+            "type": "Movie",
+            "watched": true,
+            "favorite": true,
+            "image_url": "https://m.media-amazon.com/images/M/MV5BODJlYmQxNmItYTdlZi00N2ZjLTg3ODUtM2RiMDQ1ZWZmNDk1XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
+            "rating": 5,
+            "uid": "aF71Ue9O2mbivn9m8YYecBFgoFj2"
+        }
+    }
+]
