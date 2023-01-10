@@ -1,0 +1,26 @@
+[
+    {
+        "model": "poppedapi.flick_genre",
+        "pk": 1,
+        "fields": {
+            "flick_id": 1,
+            "genre_id": 7
+        }
+    },
+    {
+        "model": "poppedapi.flick_genre",
+        "pk": 2,
+        "fields": {
+            "flick_id": 2,
+            "genre_id": 6
+        }
+    },
+    {
+        "model": "poppedapi.flick_genre",
+        "pk": 3,
+        "fields": {
+            "flick_id": 3,
+            "genre_id": 12
+        }
+    }
+]
