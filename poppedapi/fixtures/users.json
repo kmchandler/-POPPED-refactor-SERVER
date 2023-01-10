@@ -1,0 +1,35 @@
+[
+    {
+        "model": "poppedapi.user",
+        "pk": 1,
+        "fields": {
+            "first_name": "James",
+            "last_name": "Chandler",
+            "username": "lil_chumium",
+            "image_url": "https://m.media-amazon.com/images/I/513Ljv1avIL._AC_SY780_.jpg",
+            "uid": "aF71Ue9O2mbivn9m8YYecBF3h6yt"
+        }
+    },
+    {
+        "model": "poppedapi.user",
+        "pk": 2,
+        "fields": {
+            "first_name": "Kessel",
+            "last_name": "Chandler",
+            "username": "sits1",
+            "image_url": "https://images.booksense.com/images/822/737/9780803737822.jpg",
+            "uid": "aF71Ue9O2mbivn9m8YYecBFg8e6b"
+        }
+    },
+    {
+        "model": "poppedapi.user",
+        "pk": 3,
+        "fields": {
+            "first_name": "Elanor",
+            "last_name": "Chandler",
+            "username": "bean_dean_dabber",
+            "image_url": "https://m.media-amazon.com/images/I/51mwpPf8FCL._AC_SY780_.jpg",
+            "uid": "aF71Ue9O2mbivn9m8YYecBF8dl3c"
+        }
+    }
+]
