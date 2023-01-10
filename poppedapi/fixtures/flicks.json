@@ -3,7 +3,7 @@
         "model": "poppedapi.flick",
         "pk": 1,
         "fields": {
-            "title": "The Sandman",
+            "title": "the sandman",
             "type": "TV Show",
             "watched": true,
             "favorite": false,

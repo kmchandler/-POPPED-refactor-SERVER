@@ -1,0 +1,26 @@
+[
+    {
+        "model": "poppedapi.flick_cast_crew",
+        "pk": 1,
+        "fields": {
+            "flick_id": 1,
+            "cast_crew": "Jenna Coleman"
+        }
+    },
+    {
+        "model": "poppedapi.flick_cast_crew",
+        "pk": 2,
+        "fields": {
+            "flick_id": 2,
+            "cast_crew": "Matt Smith"
+        }
+    },
+    {
+        "model": "poppedapi.flick_cast_crew",
+        "pk": 3,
+        "fields": {
+            "flick_id": 3,
+            "cast_crew": "Henry Golding"
+        }
+    }
+]
