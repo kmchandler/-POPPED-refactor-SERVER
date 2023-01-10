@@ -1,0 +1,26 @@
+[
+    {
+        "model": "poppedapi.user_genre",
+        "pk": 1,
+        "fields": {
+            "genre_id": 9,
+            "user_id": 1
+        }
+    },
+    {
+        "model": "poppedapi.user_genre",
+        "pk": 2,
+        "fields": {
+            "genre_id": 1,
+            "user_id": 2
+        }
+    },
+    {
+        "model": "poppedapi.user_genre",
+        "pk": 3,
+        "fields": {
+            "genre_id": 10,
+            "user_id": 3
+        }
+    }
+]
