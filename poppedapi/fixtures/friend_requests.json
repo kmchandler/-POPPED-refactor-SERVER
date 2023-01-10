@@ -1,0 +1,26 @@
+[
+    {
+        "model": "poppedapi.friend_request",
+        "pk": 1,
+        "fields": {
+            "uid": "aF71Ue9O2mbivn9m8YYecBF3h6yt",
+            "user_id": 2
+        }
+    },
+    {
+        "model": "poppedapi.friend_request",
+        "pk": 2,
+        "fields": {
+            "uid": "aF71Ue9O2mbivn9m8YYecBFg8e6b",
+            "user_id": 3
+        }
+    },
+    {
+        "model": "poppedapi.friend_request",
+        "pk": 3,
+        "fields": {
+            "uid": "aF71Ue9O2mbivn9m8YYecBF8dl3c",
+            "user_id": 1
+        }
+    }
+]
