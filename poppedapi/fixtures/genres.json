@@ -1,0 +1,120 @@
+[
+    {
+        "model": "poppedapi.genre",
+        "pk": 1,
+        "fields": {
+            "genre_name": "action/adventure"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 2,
+        "fields": {
+            "genre_name": "animation"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 3,
+        "fields": {
+            "genre_name": "comedy"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 4,
+        "fields": {
+            "genre_name": "crime"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 5,
+        "fields": {
+            "genre_name": "documentary"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 6,
+        "fields": {
+            "genre_name": "drama"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 7,
+        "fields": {
+            "genre_name": "fantasy"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 8,
+        "fields": {
+            "genre_name": "horror"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 9,
+        "fields": {
+            "genre_name": "kids/family"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 10,
+        "fields": {
+            "genre_name": "musical"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 11,
+        "fields": {
+            "genre_name": "mystery"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 12,
+        "fields": {
+            "genre_name": "romance"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 13,
+        "fields": {
+            "genre_name": "romantic comedy"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 14,
+        "fields": {
+            "genre_name": "sci fi"
+        }
+    },    {
+        "model": "poppedapi.genre",
+        "pk": 15,
+        "fields": {
+            "genre_name": "superhero"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 16,
+        "fields": {
+            "genre_name": "thriller"
+        }
+    },
+    {
+        "model": "poppedapi.genre",
+        "pk": 17,
+        "fields": {
+            "genre_name": "western"
+        }
+    }
+]

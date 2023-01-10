@@ -1,0 +1,26 @@
+[
+    {
+        "model": "poppedapi.flick_mood",
+        "pk": 1,
+        "fields": {
+            "flick_id": 1,
+            "mood_id": 8
+        }
+    },
+    {
+        "model": "poppedapi.flick_mood",
+        "pk": 2,
+        "fields": {
+            "flick_id": 2,
+            "mood_id": 7
+        }
+    },
+    {
+        "model": "poppedapi.flick_mood",
+        "pk": 3,
+        "fields": {
+            "flick_id": 3,
+            "mood_id": 8
+        }
+    }
+]

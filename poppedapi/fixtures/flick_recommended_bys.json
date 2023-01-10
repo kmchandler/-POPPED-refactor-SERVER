@@ -1,0 +1,26 @@
+[
+    {
+        "model": "poppedapi.flick_recommended_by",
+        "pk": 1,
+        "fields": {
+            "flick_id": 1,
+            "recommended_by": "Jeff Stever"
+        }
+    },
+    {
+        "model": "poppedapi.flick_recommended_by",
+        "pk": 2,
+        "fields": {
+            "flick_id": 2,
+            "recommended_by": "Jeff Stever"
+        }
+    },
+    {
+        "model": "poppedapi.flick_recommended_by",
+        "pk": 3,
+        "fields": {
+            "flick_id": 2,
+            "recommended_by": "Cynthia Keyser"
+        }
+    }
+]

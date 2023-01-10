@@ -9,3 +9,4 @@ from .genre import Genre
 from .user_flick import User_Flick
 from .user_genre import User_Genre
 from .user import User
+from .friend_request import Friend_Request

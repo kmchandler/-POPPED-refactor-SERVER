@@ -1,0 +1,26 @@
+[
+    {
+        "model": "poppedapi.user_flick",
+        "pk": 1,
+        "fields": {
+            "flick_id": 1,
+            "user_id": 2
+        }
+    },
+    {
+        "model": "poppedapi.user_flick",
+        "pk": 2,
+        "fields": {
+            "flick_id": 3,
+            "user_id": 1
+        }
+    },
+    {
+        "model": "poppedapi.user_flick",
+        "pk": 3,
+        "fields": {
+            "flick_id": 2,
+            "user_id": 3
+        }
+    }
+]
