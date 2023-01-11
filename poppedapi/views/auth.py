@@ -5,7 +5,7 @@ from poppedapi.models import User
 
 @api_view(['POST'])
 def check_user(request):
-    '''Checks to see if User has associated data
+    '''Checks to see if User has associated User
 
     Method arguments:
       request -- The full HTTP request object
@@ -38,7 +38,6 @@ def register_user(request):
     '''
 
     user = User.objects.create(
-        id=request.data['id'],
         first_name=request.data['first_name'],
         last_name=request.data['last_name'],
         username=request.data['username'],
