@@ -31,6 +31,39 @@ class FlickCastCrewView(ViewSet):
         serializer =  FlickCastCrewSerializer(flick_cast_crews, many=True)
         return Response(serializer.data)
 
+    def create(self, request):
+        """Handle POST operations
+        Returns
+            Response -- JSON serialized flick cast crew instance
+        """
+        flick_cast_crew = Flick_Cast_Crew.objects.create(
+            flick_id=request.data["flick_id"],
+            cast_crew=request.data["cast_crew"],
+        )
+        serializer = FlickCastCrewSerializer(flick_cast_crew)
+        return Response(serializer.data)
+
+    def update(self, request, pk):
+        """Handle PUT requests for flick_cast_crew
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        flick_cast_crew = Flick_Cast_Crew.objects.get(pk=pk)
+        flick_cast_crew.flick_id = request.data["flick_id"]
+        flick_cast_crew.cast_crew = request.data["cast_crew"]
+
+        flick_cast_crew.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        """"Handle delete requests for all flick cast crews"""
+        flick_cast_crew = Flick_Cast_Crew.objects.get(pk=pk)
+        flick_cast_crew.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 class FlickCastCrewSerializer(serializers.ModelSerializer):
     """JSON serializer for flick cast crew
     """

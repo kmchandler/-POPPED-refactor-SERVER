@@ -34,8 +34,8 @@ class FlickView(ViewSet):
         Returns
             Response -- JSON serialized flick instance
         """
-        flick_mood = Flick_Mood.objects.get(pk=request.data["flick_mood"])
-        flick_genre = Flick_Genre.objects.get(pk=request.data["flick_genre"])
+        # flick_mood = Flick_Mood.objects.get(pk=request.data["flick_mood"])
+        # flick_genre = Flick_Genre.objects.get(pk=request.data["flick_genre"])
 
         flick = Flick.objects.create(
             title=request.data["title"],
@@ -45,8 +45,8 @@ class FlickView(ViewSet):
             image_url=request.data["image_url"],
             rating=request.data["rating"],
             uid=request.data["uid"],
-            flick_mood = flick_mood,
-            flick_genre = flick_genre
+            # flick_mood = flick_mood,
+            # flick_genre = flick_genre
         )
         serializer = FlickSerializer(flick)
         return Response(serializer.data)
@@ -67,12 +67,12 @@ class FlickView(ViewSet):
         flick.rating = request.data["rating"]
         flick.uid = request.data["uid"]
 
-        flick_genre = Flick_Genre.objects.get(pk=request.data["flick_genre"])
-        flick.flick_genre = flick_genre
-        flick.save()
+        # flick_genre = Flick_Genre.objects.get(pk=request.data["flick_genre"])
+        # flick.flick_genre = flick_genre
 
-        flick_mood = Flick_Mood.objects.get(pk=request.data["flick_mood"])
-        flick.flick_mood = flick_mood
+        # flick_mood = Flick_Mood.objects.get(pk=request.data["flick_mood"])
+        # flick.flick_mood = flick_mood
+
         flick.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)

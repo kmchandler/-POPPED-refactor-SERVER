@@ -47,6 +47,8 @@ class MoodView(ViewSet):
         mood = Mood.objects.get(pk=pk)
         mood.mood_name = request.data["mood_name"]
 
+        mood.save()
+
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):

@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import User, User_Genre
+from poppedapi.models import User
 
 class UserView(ViewSet):
     def retrieve(self, request, pk):
@@ -27,7 +27,7 @@ class UserView(ViewSet):
             Response -- JSON serialized user instance
         """
 
-        user_genre = User_Genre.objects.get(pk=request.data["user_genre"])
+        # user_genre = User_Genre.objects.get(pk=request.data["user_genre"])
 
         user = User.objects.create(
             first_name=request.data["first_name"],
@@ -35,7 +35,7 @@ class UserView(ViewSet):
             username=request.data["username"],
             image_url=request.data["image_url"],
             uid=request.data["uid"],
-            user_genre = user_genre
+            # user_genre = user_genre
         )
         serializer = UserSerializer(user)
         return Response(serializer.data)
@@ -54,8 +54,9 @@ class UserView(ViewSet):
         user.image_url = request.data["image_url"]
         user.uid = request.data["uid"]
 
-        user_genre = User_Genre.objects.get(pk=request.data["user_genre"])
-        user.user_genre = user_genre
+        # user_genre = User_Genre.objects.get(pk=request.data["user_genre"])
+        # user.user_genre = user_genre
+
         user.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)

@@ -31,6 +31,37 @@ class FlickRecommendedByView(ViewSet):
         serializer =  FlickRecommendedBySerializer(flick_recommended_bys, many=True)
         return Response(serializer.data)
 
+    def create(self, request):
+        """Handle POST operations
+        Returns
+            Response -- JSON serialized flick recommended by instance
+        """
+        flick_recommended_by = Flick_Recommended_By.objects.create(
+            recommended_by=request.data["recommended_by"],
+        )
+        serializer = FlickRecommendedBySerializer(flick_recommended_by)
+        return Response(serializer.data)
+
+    def update(self, request, pk):
+        """Handle PUT requests for flick_recommended_by
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        flick_recommended_by = Flick_Recommended_By.objects.get(pk=pk)
+        flick_recommended_by.recommended_by = request.data["recommended_by"]
+
+        flick_recommended_by.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        """"Handle delete requests for all flicks"""
+        flick_recommended_by = Flick_Recommended_By.objects.get(pk=pk)
+        flick_recommended_by.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 class FlickRecommendedBySerializer(serializers.ModelSerializer):
     """JSON serializer for flick recommended by
     """

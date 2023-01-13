@@ -31,6 +31,39 @@ class FlickGenreView(ViewSet):
         serializer =  FlickGenreSerializer(flick_genres, many=True)
         return Response(serializer.data)
 
+    def create(self, request):
+        """Handle POST operations
+        Returns
+            Response -- JSON serialized flick genre instance
+        """
+        flick_genre = Flick_Genre.objects.create(
+            flick_id=request.data["flick_id"],
+            genre_id=request.data["genre_id"],
+        )
+        serializer = FlickGenreSerializer(flick_genre)
+        return Response(serializer.data)
+
+    def update(self, request, pk):
+        """Handle PUT requests for flick_genre
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        flick_genre = Flick_Genre.objects.get(pk=pk)
+        flick_genre.flick_id = request.data["flick_id"]
+        flick_genre.genre_id = request.data["genre_id"]
+
+        flick_genre.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        """"Handle delete requests for all flicks"""
+        flick_genre = Flick_Genre.objects.get(pk=pk)
+        flick_genre.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 class FlickGenreSerializer(serializers.ModelSerializer):
     """JSON serializer for Flick genres
     """
