@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import Flick
+from poppedapi.models import Flick, Flick_Mood, Flick_Genre
 
 class FlickView(ViewSet):
     def retrieve(self, request, pk):
@@ -34,6 +34,9 @@ class FlickView(ViewSet):
         Returns
             Response -- JSON serialized flick instance
         """
+        flick_mood = Flick_Mood.objects.get(pk=request.data["flick_mood"])
+        flick_genre = Flick_Genre.objects.get(pk=request.data["flick_genre"])
+
         flick = Flick.objects.create(
             title=request.data["title"],
             type=request.data["type"],
@@ -41,7 +44,9 @@ class FlickView(ViewSet):
             favorite=request.data["favorite"],
             image_url=request.data["image_url"],
             rating=request.data["rating"],
-            uid=request.data["uid"]
+            uid=request.data["uid"],
+            flick_mood = flick_mood,
+            flick_genre = flick_genre
         )
         serializer = FlickSerializer(flick)
         return Response(serializer.data)
@@ -62,6 +67,14 @@ class FlickView(ViewSet):
         flick.rating = request.data["rating"]
         flick.uid = request.data["uid"]
 
+        flick_genre = Flick_Genre.objects.get(pk=request.data["flick_genre"])
+        flick.flick_genre = flick_genre
+        flick.save()
+
+        flick_mood = Flick_Mood.objects.get(pk=request.data["flick_mood"])
+        flick.flick_mood = flick_mood
+        flick.save()
+
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
@@ -75,4 +88,4 @@ class FlickSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flick
         fields = ('id', 'title', 'type', 'watched', 'favorite', 'image_url', 'rating', 'uid')
-        depth = 1
+        depth = 2
