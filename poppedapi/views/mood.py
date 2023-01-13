@@ -18,6 +18,10 @@ class MoodView(ViewSet):
         """"Handle GET requests for all moods"""
         moods = Mood.objects.all()
 
+        flick_mood = request.query_params.get('mood', None)
+        if flick_mood is not None:
+            moods = moods.filter(mood_id=flick_mood)
+
         serializer = MoodSerializer(moods, many=True)
         return Response(serializer.data)
 
@@ -56,3 +60,4 @@ class MoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mood
         fields = ('id', 'mood_name')
+        depth = 1

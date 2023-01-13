@@ -18,6 +18,14 @@ class FlickView(ViewSet):
         """"Handle GET requests for all flicks"""
         flicks = Flick.objects.all()
 
+        flick_mood = request.query_params.get('mood', None)
+        if flick_mood is not None:
+            flicks = flicks.filter(mood_id=flick_mood)
+
+        flick_genre = request.query_params.get('genre', None)
+        if flick_genre is not None:
+            flicks = flicks.filter(genre_id=flick_genre)
+
         serializer = FlickSerializer(flicks, many=True)
         return Response(serializer.data)
 
@@ -67,3 +75,4 @@ class FlickSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flick
         fields = ('id', 'title', 'type', 'watched', 'favorite', 'image_url', 'rating', 'uid')
+        depth = 1
