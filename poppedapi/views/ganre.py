@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from poppedapi.models import Genre
 
-class MoodView(ViewSet):
+class GenreView(ViewSet):
     def retrieve(self, request, pk):
         """Handle GET requests for single genre
         """

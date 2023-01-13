@@ -4,7 +4,7 @@ from rest_framework import serializers, status
 from poppedapi.models import Flick_Cast_Crew
 
 
-class FlickGenreView(ViewSet):
+class FlickCastCrewView(ViewSet):
     """Flick cast crew"""
 
     def retrieve(self, request, pk):
