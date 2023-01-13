@@ -18,6 +18,14 @@ class GenreView(ViewSet):
         """"Handle GET requests for all genres"""
         genres = Genre.objects.all()
 
+        user_genre = request.query_params.get('genre', None)
+        if user_genre is not None:
+            users = users.filter(genre_id=user_genre)
+        
+        flick_genre = request.query_params.get('genre', None)
+        if flick_genre is not None:
+            flicks = flicks.filter(genre_id=flick_genre)
+
         serializer = GenreSerializer(genres, many=True)
         return Response(serializer.data)
 
@@ -56,3 +64,4 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = ('id', 'genre_name')
+        depth = 1
