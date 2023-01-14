@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import Flick_Cast_Crew
+from poppedapi.models import Flick_Cast_Crew, Flick
 
 
 class FlickCastCrewView(ViewSet):
@@ -36,8 +36,9 @@ class FlickCastCrewView(ViewSet):
         Returns
             Response -- JSON serialized flick cast crew instance
         """
+        flick = Flick.objects.get(id=request.data["flick_id"])
         flick_cast_crew = Flick_Cast_Crew.objects.create(
-            flick_id=request.data["flick_id"],
+            flick_id=flick,
             cast_crew=request.data["cast_crew"],
         )
         serializer = FlickCastCrewSerializer(flick_cast_crew)
