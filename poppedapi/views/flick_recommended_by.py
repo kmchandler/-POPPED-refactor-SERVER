@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import Flick_Recommended_By
+from poppedapi.models import Flick_Recommended_By, Flick
 
 
 class FlickRecommendedByView(ViewSet):
@@ -30,6 +30,40 @@ class FlickRecommendedByView(ViewSet):
         flick_recommended_bys = Flick_Recommended_By.objects.all()
         serializer =  FlickRecommendedBySerializer(flick_recommended_bys, many=True)
         return Response(serializer.data)
+
+    def create(self, request):
+        """Handle POST operations
+        Returns
+            Response -- JSON serialized flick recommended by instance
+        """
+        flick = Flick.objects.get(id=request.data["flick_id"])
+        flick_recommended_by = Flick_Recommended_By.objects.create(
+            flick_id = flick,
+            recommended_by=request.data["recommended_by"],
+        )
+        serializer = FlickRecommendedBySerializer(flick_recommended_by)
+        return Response(serializer.data)
+
+    def update(self, request, pk):
+        """Handle PUT requests for flick_recommended_by
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        flick = Flick.objects.get(id=request.data["flick_id"])
+        flick_recommended_by = Flick_Recommended_By.objects.get(pk=pk)
+        flick_recommended_by.flick_id = flick
+        flick_recommended_by.recommended_by = request.data["recommended_by"]
+
+        flick_recommended_by.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        """"Handle delete requests for all flicks"""
+        flick_recommended_by = Flick_Recommended_By.objects.get(pk=pk)
+        flick_recommended_by.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class FlickRecommendedBySerializer(serializers.ModelSerializer):
     """JSON serializer for flick recommended by

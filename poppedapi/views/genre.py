@@ -51,6 +51,8 @@ class GenreView(ViewSet):
         genre = Genre.objects.get(pk=pk)
         genre.genre_name = request.data["genre_name"]
 
+        genre.save()
+
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
@@ -64,4 +66,3 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = ('id', 'genre_name')
-        depth = 1

@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import User_Genre
+from poppedapi.models import User_Genre, User, Genre
 
 
 class UserGenreView(ViewSet):
@@ -30,6 +30,42 @@ class UserGenreView(ViewSet):
         user_genres = User_Genre.objects.all()
         serializer =  UserGenreSerializer(user_genres, many=True)
         return Response(serializer.data)
+
+    def create(self, request):
+        """Handle POST operations
+        Returns
+            Response -- JSON serialized user genre instance
+        """
+        user = User.objects.get(id=request.data["user_id"])
+        genre = Genre.objects.get(id=request.data["genre_id"])
+        user_genre = User_Genre.objects.create(
+            user_id=user,
+            genre_id=genre,
+        )
+        serializer = UserGenreSerializer(user_genre)
+        return Response(serializer.data)
+
+    def update(self, request, pk):
+        """Handle PUT requests for user_genre
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        user = User.objects.get(id=request.data["user_id"])
+        genre = Genre.objects.get(id=request.data["genre_id"])
+        user_genre = User_Genre.objects.get(pk=pk)
+        user_genre.user_id = user
+        user_genre.genre_id = genre
+
+        user_genre.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        """"Handle delete requests for all user genres"""
+        user_genre = User_Genre.objects.get(pk=pk)
+        user_genre.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class UserGenreSerializer(serializers.ModelSerializer):
     """JSON serializer for user genres
