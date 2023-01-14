@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import Flick_Recommended_By
+from poppedapi.models import Flick_Recommended_By, Flick
 
 
 class FlickRecommendedByView(ViewSet):
@@ -36,7 +36,9 @@ class FlickRecommendedByView(ViewSet):
         Returns
             Response -- JSON serialized flick recommended by instance
         """
+        flick = Flick.objects.get(id=request.data["flick_id"])
         flick_recommended_by = Flick_Recommended_By.objects.create(
+            flick_id = flick,
             recommended_by=request.data["recommended_by"],
         )
         serializer = FlickRecommendedBySerializer(flick_recommended_by)

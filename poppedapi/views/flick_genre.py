@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import Flick_Genre
+from poppedapi.models import Flick_Genre, Flick
 
 
 class FlickGenreView(ViewSet):
@@ -36,8 +36,9 @@ class FlickGenreView(ViewSet):
         Returns
             Response -- JSON serialized flick genre instance
         """
+        flick = Flick.objects.get(id=request.data["flick_id"])
         flick_genre = Flick_Genre.objects.create(
-            flick_id=request.data["flick_id"],
+            flick_id=flick,
             genre_id=request.data["genre_id"],
         )
         serializer = FlickGenreSerializer(flick_genre)

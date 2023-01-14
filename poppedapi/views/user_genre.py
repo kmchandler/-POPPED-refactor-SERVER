@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import User_Genre
+from poppedapi.models import User_Genre, User
 
 
 class UserGenreView(ViewSet):
@@ -36,8 +36,9 @@ class UserGenreView(ViewSet):
         Returns
             Response -- JSON serialized user genre instance
         """
+        user = User.objects.get(id=request.data["user_id"])
         user_genre = User_Genre.objects.create(
-            user_id=request.data["user_id"],
+            user_id=user,
             genre_id=request.data["genre_id"],
         )
         serializer = UserGenreSerializer(user_genre)
