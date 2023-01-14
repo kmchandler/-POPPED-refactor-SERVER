@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import Flick_Genre, Flick
+from poppedapi.models import Flick_Genre, Flick, Genre
 
 
 class FlickGenreView(ViewSet):
@@ -37,9 +37,10 @@ class FlickGenreView(ViewSet):
             Response -- JSON serialized flick genre instance
         """
         flick = Flick.objects.get(id=request.data["flick_id"])
+        genre = Genre.objects.get(id=request.data["genre_id"])
         flick_genre = Flick_Genre.objects.create(
             flick_id=flick,
-            genre_id=request.data["genre_id"],
+            genre_id=genre,
         )
         serializer = FlickGenreSerializer(flick_genre)
         return Response(serializer.data)
@@ -50,10 +51,11 @@ class FlickGenreView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
-
+        flick = Flick.objects.get(id=request.data["flick_id"])
+        genre = Genre.objects.get(id=request.data["genre_id"])
         flick_genre = Flick_Genre.objects.get(pk=pk)
-        flick_genre.flick_id = request.data["flick_id"]
-        flick_genre.genre_id = request.data["genre_id"]
+        flick_genre.flick_id = flick
+        flick_genre.genre_id = genre
 
         flick_genre.save()
 

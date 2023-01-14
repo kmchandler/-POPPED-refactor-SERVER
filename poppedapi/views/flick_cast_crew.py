@@ -50,9 +50,9 @@ class FlickCastCrewView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
-
+        flick = Flick.objects.get(id=request.data["flick_id"])
         flick_cast_crew = Flick_Cast_Crew.objects.get(pk=pk)
-        flick_cast_crew.flick_id = request.data["flick_id"]
+        flick_cast_crew.flick_id = flick
         flick_cast_crew.cast_crew = request.data["cast_crew"]
 
         flick_cast_crew.save()

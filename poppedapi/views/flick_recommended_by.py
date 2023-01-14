@@ -50,8 +50,9 @@ class FlickRecommendedByView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
-
+        flick = Flick.objects.get(id=request.data["flick_id"])
         flick_recommended_by = Flick_Recommended_By.objects.get(pk=pk)
+        flick_recommended_by.flick_id = flick
         flick_recommended_by.recommended_by = request.data["recommended_by"]
 
         flick_recommended_by.save()

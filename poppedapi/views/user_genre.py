@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import User_Genre, User
+from poppedapi.models import User_Genre, User, Genre
 
 
 class UserGenreView(ViewSet):
@@ -37,9 +37,10 @@ class UserGenreView(ViewSet):
             Response -- JSON serialized user genre instance
         """
         user = User.objects.get(id=request.data["user_id"])
+        genre = Genre.objects.get(id=request.data["genre_id"])
         user_genre = User_Genre.objects.create(
             user_id=user,
-            genre_id=request.data["genre_id"],
+            genre_id=genre,
         )
         serializer = UserGenreSerializer(user_genre)
         return Response(serializer.data)
@@ -50,10 +51,11 @@ class UserGenreView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
-
+        user = User.objects.get(id=request.data["user_id"])
+        genre = Genre.objects.get(id=request.data["genre_id"])
         user_genre = User_Genre.objects.get(pk=pk)
-        user_genre.user_id = request.data["genre_id"]
-        user_genre.genre_id = request.data["genre_id"]
+        user_genre.user_id = user
+        user_genre.genre_id = genre
 
         user_genre.save()
 
