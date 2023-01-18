@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from poppedapi.views import register_user, check_user, UserView, FlickCastCrewView, FlickGenreView, FlickRecommendedByView, FlickView, GenreView, MoodView, UserGenreView
+from poppedapi.views import register_user, check_user, UserView, FlickCastCrewView, FlickGenreView, FlickRecommendedByView, FlickView, GenreView, MoodView, UserGenreView, ProfileView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', UserView, 'user')
@@ -28,6 +28,7 @@ router.register(r'flicks', FlickView, 'flick')
 router.register(r'genres', GenreView, 'genre')
 router.register(r'moods', MoodView, 'mood')
 router.register(r'user_genres', UserGenreView, 'user_genre')
+router.register(r'profile', ProfileView, 'profile')
 
 urlpatterns = [
     path('register', register_user),
