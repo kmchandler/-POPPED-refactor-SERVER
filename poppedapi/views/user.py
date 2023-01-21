@@ -54,9 +54,6 @@ class UserView(ViewSet):
         user.image_url = request.data["image_url"]
         user.uid = request.data["uid"]
 
-        # user_genre = User_Genre.objects.get(pk=request.data["user_genre"])
-        # user.user_genre = user_genre
-
         user.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
