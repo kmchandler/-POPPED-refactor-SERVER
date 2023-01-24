@@ -7,7 +7,7 @@ class UserView(ViewSet):
     def retrieve(self, request, pk):
         """Handle GET requests for single user
         """
-        try:    
+        try:
             user = User.objects.get(pk=pk)
             serializer = UserSerializer(user)
             return Response(serializer.data)
@@ -18,6 +18,10 @@ class UserView(ViewSet):
         """"Handle GET requests for all users"""
         users = User.objects.all()
 
+        user_id = request.query_params.get('uid', None)
+        if user_id is not None:
+            users = users.filter(uid=user_id)
+
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
 
@@ -27,15 +31,12 @@ class UserView(ViewSet):
             Response -- JSON serialized user instance
         """
 
-        # user_genre = User_Genre.objects.get(pk=request.data["user_genre"])
-
         user = User.objects.create(
             first_name=request.data["first_name"],
             last_name=request.data["last_name"],
             username=request.data["username"],
             image_url=request.data["image_url"],
             uid=request.data["uid"],
-            # user_genre = user_genre
         )
         serializer = UserSerializer(user)
         return Response(serializer.data)
@@ -69,4 +70,3 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'first_name', 'last_name', 'username', 'image_url', 'uid')
-        depth = 2

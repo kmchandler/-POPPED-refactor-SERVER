@@ -7,4 +7,3 @@ from .flick import FlickView
 from .genre import GenreView
 from .mood import MoodView
 from .user_genre import UserGenreView
-from .profile import ProfileView

@@ -18,7 +18,7 @@ class GenreView(ViewSet):
         """"Handle GET requests for all genres"""
         genres = Genre.objects.all()
 
-        user_genre = request.query_params.get('genre', None)
+        user_genre = request.query_params.get('user_id', None)
         if user_genre is not None:
             users = users.filter(genre_id=user_genre)
         

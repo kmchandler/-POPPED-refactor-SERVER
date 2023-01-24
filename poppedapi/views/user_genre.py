@@ -28,6 +28,10 @@ class UserGenreView(ViewSet):
             Response -- JSON serialized list of user genres
         """
         user_genres = User_Genre.objects.all()
+        id_for_user = request.query_params.get('userId', None)
+        if id_for_user is not None:
+            user_genres = user_genres.filter(user_id=id_for_user)
+
         serializer =  UserGenreSerializer(user_genres, many=True)
         return Response(serializer.data)
 

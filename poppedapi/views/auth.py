@@ -22,7 +22,7 @@ def check_user(request):
             'last_name': user.last_name,
             'username': user.username,
             "image_url": user.image_url,
-            'uid': user.uid
+            'uid': user.uid,
         }
         return Response(data)
     except:
