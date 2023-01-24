@@ -25,6 +25,10 @@ class FlickView(ViewSet):
         flick_genre = request.query_params.get('genre', None)
         if flick_genre is not None:
             flicks = flicks.filter(genre_id=flick_genre)
+        
+        user_id = request.query_params.get('uid', None)
+        if user_id is not None:
+            flicks = flicks.filter(uid=user_id)
 
         serializer = FlickSerializer(flicks, many=True)
         return Response(serializer.data)
