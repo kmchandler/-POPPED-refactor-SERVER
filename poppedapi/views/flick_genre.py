@@ -28,6 +28,10 @@ class FlickGenreView(ViewSet):
             Response -- JSON serialized list of flick genres
         """
         flick_genres = Flick_Genre.objects.all()
+        id_for_flick = request.query_params.get('flick', None)
+        if id_for_flick is not None:
+            flick_genres = flick_genres.filter(flick=id_for_flick)
+
         serializer =  FlickGenreSerializer(flick_genres, many=True)
         return Response(serializer.data)
 
@@ -36,11 +40,13 @@ class FlickGenreView(ViewSet):
         Returns
             Response -- JSON serialized flick genre instance
         """
+
+        print(request.data)
         flick = Flick.objects.get(id=request.data["flick_id"])
         genre = Genre.objects.get(id=request.data["genre_id"])
         flick_genre = Flick_Genre.objects.create(
-            flick_id=flick,
-            genre_id=genre,
+            flick=flick,
+            genre=genre,
         )
         serializer = FlickGenreSerializer(flick_genre)
         return Response(serializer.data)
@@ -54,8 +60,8 @@ class FlickGenreView(ViewSet):
         flick = Flick.objects.get(id=request.data["flick_id"])
         genre = Genre.objects.get(id=request.data["genre_id"])
         flick_genre = Flick_Genre.objects.get(pk=pk)
-        flick_genre.flick_id = flick
-        flick_genre.genre_id = genre
+        flick_genre.flick = flick
+        flick_genre.genre = genre
 
         flick_genre.save()
 

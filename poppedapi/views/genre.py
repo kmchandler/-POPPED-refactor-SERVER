@@ -26,6 +26,10 @@ class GenreView(ViewSet):
         if flick_genre is not None:
             flicks = flicks.filter(genre_id=flick_genre)
 
+        name = request.query_params.get('genre_name', None)
+        if name is not None:
+            genres = genres.filter(genre_name=name)
+
         serializer = GenreSerializer(genres, many=True)
         return Response(serializer.data)
 

@@ -4,5 +4,5 @@ from .genre import Genre
 
 class Flick_Genre(models.Model):
 
-    flick_id = models.ForeignKey(Flick, on_delete=models.CASCADE)
-    genre_id = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    flick = models.ForeignKey(Flick, on_delete=models.CASCADE)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
