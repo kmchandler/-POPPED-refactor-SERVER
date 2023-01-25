@@ -4,5 +4,5 @@ from .user import User
 
 class User_Flick(models.Model):
 
-    flick_id = models.ForeignKey(Flick, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    flick = models.ForeignKey(Flick, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

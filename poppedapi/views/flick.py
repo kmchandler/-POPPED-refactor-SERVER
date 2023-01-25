@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from poppedapi.models import Flick, Flick_Mood, Flick_Genre
+from poppedapi.models import Flick
 
 class FlickView(ViewSet):
     def retrieve(self, request, pk):

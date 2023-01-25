@@ -4,5 +4,5 @@ from .mood import Mood
 
 class Flick_Mood(models.Model):
 
-    flick_id = models.ForeignKey(Flick, on_delete=models.CASCADE)
-    mood_id = models.ForeignKey(Mood, on_delete=models.CASCADE)
+    flick = models.ForeignKey(Flick, on_delete=models.CASCADE)
+    mood = models.ForeignKey(Mood, on_delete=models.CASCADE)

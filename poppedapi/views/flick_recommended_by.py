@@ -37,10 +37,14 @@ class FlickRecommendedByView(ViewSet):
             Response -- JSON serialized flick recommended by instance
         """
         flick = Flick.objects.get(id=request.data["flick_id"])
-        flick_recommended_by = Flick_Recommended_By.objects.create(
-            flick_id = flick,
-            recommended_by=request.data["recommended_by"],
-        )
+        info = request.data["recommended_by"].split(',')
+
+        for x in info:
+            flick_recommended_by = Flick_Recommended_By.objects.create(
+            flick_id=flick,
+            cast_crew=x,
+            )
+
         serializer = FlickRecommendedBySerializer(flick_recommended_by)
         return Response(serializer.data)
 
