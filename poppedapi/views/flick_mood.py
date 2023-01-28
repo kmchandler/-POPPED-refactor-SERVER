@@ -40,7 +40,6 @@ class FlickMoodView(ViewSet):
             Response -- JSON serialized flick mood instance
         """
 
-        print(request.data)
         flick = Flick.objects.get(id=request.data["flick_id"])
         mood = Mood.objects.get(id=request.data["mood_id"])
         flick_mood = Flick_Mood.objects.create(

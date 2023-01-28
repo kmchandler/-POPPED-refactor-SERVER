@@ -28,6 +28,11 @@ class FlickCastCrewView(ViewSet):
             Response -- JSON serialized list of flick cast crew
         """
         flick_cast_crews = Flick_Cast_Crew.objects.all()
+
+        id_for_flick = request.query_params.get('flick', None)
+        if id_for_flick is not None:
+            flick_cast_crews = flick_cast_crews.filter(flick=id_for_flick)
+            
         serializer =  FlickCastCrewSerializer(flick_cast_crews, many=True)
         return Response(serializer.data)
 
@@ -37,13 +42,9 @@ class FlickCastCrewView(ViewSet):
             Response -- JSON serialized flick cast crew instance
         """
         flick = Flick.objects.get(id=request.data["flick_id"])
-        info = request.data["cast_crew"].split(',')
+        cast_crew = request.data["cast_crew"]
 
-        for x in info:
-            flick_cast_crew = Flick_Cast_Crew.objects.create(
-            flick_id=flick,
-            cast_crew=x,
-            )
+        flick_cast_crew = Flick_Cast_Crew.objects.create(flick=flick, cast_crew=cast_crew)
 
         serializer = FlickCastCrewSerializer(flick_cast_crew)
         return Response(serializer.data)

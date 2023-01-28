@@ -78,8 +78,8 @@ class FlickView(ViewSet):
         # flick.flick_mood = flick_mood
 
         flick.save()
-
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+        serializer = FlickSerializer(flick)
+        return Response(serializer.data)
 
     def destroy(self, request, pk):
         """"Handle delete requests for all flicks"""
