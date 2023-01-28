@@ -40,8 +40,6 @@ class FlickGenreView(ViewSet):
         Returns
             Response -- JSON serialized flick genre instance
         """
-
-        print(request.data)
         flick = Flick.objects.get(id=request.data["flick_id"])
         genre = Genre.objects.get(id=request.data["genre_id"])
         flick_genre = Flick_Genre.objects.create(
